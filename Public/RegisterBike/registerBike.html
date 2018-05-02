@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Bike Reporter - Register Bike </title>
+        <!-- Links the Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="..\..\Stylesheet\stylesheet.css">
+
+        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <script src="../../js/jquery-3.2.1.js"></script>
+        <script src="../../js/indexeddb.js"></script>
+    </head>
+    <body>
+
+        <header class="registration">
+            <h1> Bike Reporter </h1>
+            <h2> Register Bike </h2>
+
+            <!-- A number of items in a list that act as hyperlinks to other pages on the site.
+            These links make up the navigation bar on the site, and are re-arranged with CSS code
+            to make the layout look nicer. -->
+            <nav>
+                <ul>
+                    <li> <a href="../Home/home.html">Home</a> </li>
+                    <li> <a href="../RegisterBike/registerBike.html">Register Bike</a> </li>
+                    <li> <a href="../ReportBike/reportBike.html">Report Stolen Bike</a> </li>
+                    <li> <a href="../StatusCheck/statusCheck.html">Status Check</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="registerBike">
+            <p>Register a Bike:</p>
+
+            <form class="bike" id="bikeRegistrationForm">
+                <!-- This form takes user information as input and then insert said information into the indexeddb database. -->
+                <label> Bike Make: </label>
+                <input type="text" name="bikeMake" class="registerBike" id="bikeMake"><br><br>
+
+                <label> Bike Model: </label>
+                <input type="text" name="bikeModel" class="registerBike" id="bikeModel"><br><br>
+
+                <label> Bike Serial Number: </label>
+                <input type="text" name="bikeSerialNumber" class="registerBike" id="bikeSerialNumber"><br><br>
+
+                <label> Purchase Location: </label>
+                <input type="text" name="purchaseLocation" class="registerBike" id="purchaseLocation"><br><br>
+
+                <label> Bike Type: </label>
+                <input type="text" name="bikeType" class="registerBike" id="bikeType"><br><br>
+
+                <label> Gender: </label>
+                <input type="text" name="gender" class="registerBike" id="gender"><br><br>
+
+                <label> Age Group: </label>
+                <input type="text" name="ageGroup" class="registerBike" id="ageGroup"><br><br>
+
+                <!-- On clicking this button, the bike data is entered into the database through javascript functions -->
+                <input type="submit" name="registerBike" value="Register Bike" class="registerBike">
+            </form>
+
+        </section>
+
+        <!-- This loads in the javascript from 'registerBike.js' -->
+        <script src="./registerBike.js"></script>
+
+    </body>
+</html>

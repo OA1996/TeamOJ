@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Bike Reporter - Police Login </title>
+        <!-- Links the Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="./stylesheetLogin.css">
+
+        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <script src="../../js/jquery-3.2.1.js"></script>
+        <script src="../../js/indexeddb.js"></script>
+    </head>
+    <body>
+
+        <header class="login">
+            <h1> Bike Reporter </h1>
+            <h2> Police Login </h2>
+        </header>
+
+        <section class="login">
+            <form class="login" id="policeLoginForm">
+                <!-- This form is used to insert login data (e.g. officer ID, password) -->
+                <label> Officer ID </label><br>
+                <input type="text" name="officerID" class="login" id="officerID"><br><br>
+
+                <label> Password </label><br>
+                <input type="password" name="password" class="login" id="password"><br><br>
+
+                <!-- Through the login.js file, when the submit button is pressed, the indexeddb
+                database is opened/created and the verifyLogin() function is triggered -->
+                <input type="submit" name="login" value="Login" class="login">
+            </form>
+        </section>
+
+        <!-- This loads in the javascript from 'login.js' -->
+        <script src="./login.js"></script>
+
+    </body>
+</html>

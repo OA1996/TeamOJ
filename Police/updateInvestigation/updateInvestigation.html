@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bike Reporter - Update Investigation</title>
+        <!-- Links the Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="../../Stylesheet/stylesheet.css">
+
+        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <script src="../../js/jquery-3.2.1.js"></script>
+        <script src="../../js/indexeddb.js"></script>
+    </head>
+    <body onload="extractResults()">
+
+        <header class="updateInvestigation">
+            <h1> Bike Reporter </h1>
+            <h2> Update Investigations </h2>
+        </header>
+
+        <section class="update">
+            <p> Select a registered bike to report it as stolen: </p>
+
+            <!-- This table is created with the headers seen below, when the body of the page is loaded,
+            a function is run to extract all of the bike data for the user and output it in the
+            following table. -->
+            <table class="update" id="bikeTable">
+                <tr>
+                    <th>User ID</th>
+                    <th>Bike Make</th>
+                    <th>Bike Model</th>
+                    <th>Serial No.</th>
+                    <th>Recovery Status</th>
+                </tr>
+            </table><br>
+
+            <!-- A selection box is created with a number of values relating to the different stages of
+            bike recovery. These stages are each assigned a number, and this number can be stored in the
+            database. -->
+            <p>Recovery Stage Update:</p>
+            <select class="update" name="recoveryStage" id="recoveryStageUpdate">
+                <option value="1">Bike Reported Stolen</option>
+                <option value="2">Bike Retrieved</option>
+                <option value="3">Bike Ready for Collection</option>
+                <option value="4">Bike Collected</option>
+            </select><br><br>
+
+            <!-- Upon pressing the following button, a function is run to select the relevant bike values and
+            change the recovery status associated with the bike. -->
+            <input type="submit" name="updateInvestigation" value="Update" class="update" onclick="bikeSelect()">
+        </section>
+
+        <!-- This loads in the javascript from 'updateInvestigation.js' -->
+        <script src="./updateInvestigation.js"></script>
+
+    </body>
+</html>

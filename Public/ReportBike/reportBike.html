@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Bike Reporter - Report Stolen Bike </title>
+        <!-- Links the Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="..\..\Stylesheet\stylesheet.css">
+
+        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <script src="../../js/jquery-3.2.1.js"></script>
+        <script src="../../js/indexeddb.js"></script>
+    </head>
+    <body onload="extractResults()">
+
+        <header class="reportBike">
+            <h1> Bike Reporter </h1>
+            <h2> Report Stolen Bike </h2>
+
+            <!-- A number of items in a list that act as hyperlinks to other pages on the site.
+            These links make up the navigation bar on the site, and are re-arranged with CSS code
+            to make the layout look nicer. -->
+            <nav>
+                <ul>
+                    <li> <a href="../Home/home.html">Home</a> </li>
+                    <li> <a href="../RegisterBike/registerBike.html">Register Bike</a> </li>
+                    <li> <a href="../ReportBike/reportBike.html">Report Stolen Bike</a> </li>
+                    <li> <a href="../StatusCheck/statusCheck.html">Status Check</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="report">
+            <p> Select a registered bike to report it as stolen: </p>
+
+            <!-- This table is created with the headers seen below, when the body of the page is loaded,
+            a function is run to extract all of the relevant bike data for the user and output it in the
+            following table. -->
+            <table class="report" id="bikeTable">
+                <tr>
+                    <th>Bike Make</th>
+                    <th>Bike Model</th>
+                    <th>Serial No.</th>
+                </tr>
+            </table><br>
+
+            <!-- On clicking the following button, a funciton is run to select the chosen serial number from the table
+            and compare it with the database to find the right bike. After finding the right bike in the database, the
+            entry is updated to say that the bike has been reported as stolen. -->
+            <input type="submit" name="reportStolen" value="Report Stolen" class="report" onclick="serialNoSelect()">
+        </section>
+
+        <!-- This loads in the javascript from 'reportBike.js' -->
+        <script src="./reportBike.js"></script>
+
+    </body>
+</html>

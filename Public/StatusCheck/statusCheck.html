@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bike Reporter - Status Check </title>
+        <!-- Links the Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="..\..\Stylesheet\stylesheet.css">
+
+        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <script src="../../js/jquery-3.2.1.js"></script>
+        <script src="../../js/indexeddb.js"></script>
+    </head>
+    <body onload="extractResults()">
+
+        <header class="check">
+            <h1> Bike Reporter </h1>
+            <h2> Status Check </h2>
+
+            <!-- A number of items in a list that act as hyperlinks to other pages on the site.
+            These links make up the navigation bar on the site, and are re-arranged with CSS code
+            to make the layout look nicer. -->
+            <nav>
+                <ul>
+                    <li> <a href="../Home/home.html">Home</a> </li>
+                    <li> <a href="../RegisterBike/registerBike.html">Register Bike</a> </li>
+                    <li> <a href="../ReportBike/reportBike.html">Report Stolen Bike</a> </li>
+                    <li> <a href="../StatusCheck/statusCheck.html">Status Check</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <p>View the status of bikes that you've reported as stolen:</p>
+
+        <!-- This table is created with the headers seen below, when the body of the page is loaded,
+        a function is run to extract all of the relevant bike data for the user and output it in the
+        following table. -->
+        <table class="check" id="bikeTable">
+            <tr>
+                <th>Bike Make</th>
+                <th>Bike Model</th>
+                <th>Serial No.</th>
+                <th>Recovery Status</th>
+            </tr>
+        </table>
+
+        <!-- This loads in the javascript from 'statusCheck.js' -->
+        <script src="./statusCheck.js"></script>
+
+    </body>
+</html>
