@@ -9,6 +9,14 @@
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../../js/jquery-3.2.1.js"></script>
         <script src="../../js/indexeddb.js"></script>
+        
+        <!-- Google maps jquery -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.js"
+                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+                crossorigin="anonymous"></script>
+        
     </head>
     <body onload="extractResults()">
 
@@ -42,6 +50,9 @@
                     <th>Serial No.</th>
                 </tr>
             </table><br>
+            
+            <label> Theft Location: </label>
+                <input type="text" name="location" class="registerBike" id="location"><br><br>
 
             <!-- On clicking the following button, a funciton is run to select the chosen serial number from the table
             and compare it with the database to find the right bike. After finding the right bike in the database, the
