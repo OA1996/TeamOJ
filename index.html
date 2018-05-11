@@ -22,12 +22,12 @@
         </header>
 
         <section class="login">
-            <form class="login" id="userLoginForm">
+            <form class="login" id="userLoginForm" action="Login.php" method="POST">
                 <!-- This form is used to insert login data (e.g. email address, password) -->
-                <label> Email Address </label><br>
+                <label for="emailAddress"> Email Address </label><br>
                 <input type="email" name="emailAddress" class="login" id="email"><br><br>
 
-                <label> Password </label><br>
+                <label for="password"> Password </label><br>
                 <input type="password" name="password" class="login" id="password"><br><br>
 
                 <!-- When the following button is clicked, it runs the verifyLogin() function found in the 'login.js' file. -->

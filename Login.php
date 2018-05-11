@@ -11,15 +11,15 @@ session_start();
 session_unset();
 
 // The values are grabbed from the username and password fields
-$email = $_POST['usernameField'];
-$password = $_POST['passwordField'];
+$email = $_POST['emailAddress'];
+$password = $_POST['password'];
 
 // Change the following as applicable to suit the server it is on
 // The values here are used in every mysqli connection in the file
 $serverName = 'localhost';
-$dbUsername;
-$dbPassword;
-$dbName;
+$dbUsername = 's1703829_user';
+$dbPassword = 'password100';
+$dbName = 's1703829_TeamOJ';
 
 // Creates a SQL db connection with the above credentials
 $mysqli = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
@@ -34,9 +34,9 @@ if ($mysqli->connect_errno) {
 }
 
 // Variables relating to the main query that will be carried out on the database
-$res = $mysqli->query("SELECT * FROM `usersTable` WHERE `email` = '$email' LIMIT 1");
+$res = $mysqli->query("SELECT * FROM `Users` WHERE `Email` = '$email' LIMIT 1");
 $row = $res->fetch_assoc();
-$dbEmail = $row['email'];
+$dbEmail = $row['Email'];
 
 // Checks if there are errors in getting a result from the database
 if (!$res) {
@@ -48,13 +48,13 @@ if (!$res) {
     if (!$GLOBALS['email'] == $GLOBALS['dbEmail']) {
         echo "Error: Email not found.";
         session_destroy();
-        echo "<script>window.location.href = \"./Login.html\";</script>";
+        echo "<script>window.location.href = \"./index.html\";</script>";
         exit;
     }
 
     // http://php.net/manual/en/function.password-verify.php
     // password_verify() takes the user input, hashes it with the bcrypt algorithm, then checks it against the db value
-    if (password_verify($GLOBALS['password'], $row['pass'])) {
+    if (password_verify($GLOBALS['password'], $row['Password'])) {
         // If it matches, the email is checked again
         // (This can probably be taken out)
         $GLOBALS['dbEmail'] = $GLOBALS['email'];
@@ -66,21 +66,20 @@ if (!$res) {
         // Check permissions and decide where to put user
         // Stores user permissions in session storage, then uses js to put the
         // user on the correct homepage
-        if ($row['permissions'] == 'public') {
-            $_SESSION['permissions'] = 'public';
-            echo "<script>window.location.href = \"../Home/Home.html\";</script>";
+        if ($row['Privilege'] == 'public') {
+            $_SESSION['Privilege'] = 'public';
+            echo "<script>window.location.href = \"./Public/Home/home.html\";</script>";
             exit;
-        } elseif ($row['permissions'] == 'police') {
-            $_SESSION['permissions'] = 'police';
-            echo "<script>window.location.href = \"../../Police/Home/Home.html\";</script>";
+        } elseif ($row['Privilege'] == 'police') {
+            $_SESSION['Privilege'] = 'police';
+            echo "<script>window.location.href = \"./Police/updateInvestigation/updateInvestigation.html\";</script>";
             exit;
-        } elseif ($row['permissions'] == 'admin') {
-            // Currently doesn't relocate user to any page
-            // Adapt code to relocate admin user to an admin control panel once implemented
-            $_SESSION['permissions'] = 'admin';
+        } elseif ($row['Privilege'] == 'admin') {
+            $_SESSION['Privilege'] = 'admin';
+            echo "<script>window.location.href = \"./Admin/adminControlPanel.html\";</script>"
             exit;
         } else {
-            echo "Error: User has no permissions.";
+            echo "Error: User has no privilege.";
             session_destroy();
             exit;
         }
@@ -90,7 +89,7 @@ if (!$res) {
         // Adapt this to return you to the login screen with an error message
         echo "Username or Password is incorrect.";
         session_destroy();
-        echo "<script>window.location.href = \"./Login.html\";</script>";
+        echo "<script>window.location.href = \"./index.html\";</script>";
         exit;
     }
 }
