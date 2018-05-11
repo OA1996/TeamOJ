@@ -11,7 +11,6 @@
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="./js/jquery-3.2.1.js"></script>
-        <script src="./js/indexeddb.js"></script>
     </head>
 
     <body>
@@ -22,7 +21,7 @@
         </header>
 
         <section class="login">
-            <form class="login" id="userLoginForm" action="Login.php" method="POST">
+            <form class="login" id="userLoginForm" action="login.php" method="POST">
                 <!-- This form is used to insert login data (e.g. email address, password) -->
                 <label for="emailAddress"> Email Address </label><br>
                 <input type="email" name="emailAddress" class="login" id="email"><br><br>
@@ -31,7 +30,7 @@
                 <input type="password" name="password" class="login" id="password"><br><br>
 
                 <!-- When the following button is clicked, it runs the verifyLogin() function found in the 'login.js' file. -->
-                <input type="submit" name="login" value="Login" class="login" id="button" onclick="verifyLogin()"><br><br><br>
+                <input type="submit" name="login" value="Login" class="login" id="button"><br><br><br>
 
                 <!-- This text links to the registration page and the police login, in the event that somebody either doesn't
                 have an account, or they're using the user login as opposed to the dedicated police login. -->
@@ -40,8 +39,8 @@
             </form>
         </section>
 
-        <!-- This loads in the javascript from 'login.js' -->
-        <script src="./login.js"></script>
+        <!-- This loads in the php from 'login.php' -->
+        <?php include './login.php';?>
 
     </body>
 

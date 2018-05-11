@@ -30,7 +30,7 @@ if ($mysqli->connect_errno) {
     session_destroy();
     exit;
 } else {
-    // echo "Successfully connected to MySQL.<br>";
+
 }
 
 // Variables relating to the main query that will be carried out on the database
@@ -76,7 +76,7 @@ if (!$res) {
             exit;
         } elseif ($row['Privilege'] == 'admin') {
             $_SESSION['Privilege'] = 'admin';
-            echo "<script>window.location.href = \"./Admin/adminControlPanel.html\";</script>"
+            echo "<script>window.location.href = \"./Admin/adminControlPanel.html\";</script>";
             exit;
         } else {
             echo "Error: User has no privilege.";

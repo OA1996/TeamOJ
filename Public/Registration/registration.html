@@ -8,7 +8,6 @@
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../../js/jquery-3.2.1.js"></script>
-        <script src="../../js/indexeddb.js"></script>
     </head>
     <body>
 
@@ -18,48 +17,41 @@
         </header>
 
         <section class="registration">
-            <form class="registration" id="userRegistrationForm">
+            <form class="registration" id="userRegistrationForm" action="registration.php" method="POST">
                 <!-- This form takes user information as input and then insert said information into the indexeddb database. -->
-                <label> First Name </label>
+                <label for="firstName"> First Name </label>
                 <input type="text" name="firstName" class="registration" id="firstName"><br><br>
 
-                <label> Surname </label>
+                <label for="surname"> Surname </label>
                 <input type="text" name="surname" class="registration" id="surname"><br><br>
 
-                <label> Email Address </label>
+                <label for="emailAddress"> Email Address </label>
                 <input type="email" name="emailAddress" class="registration" id="email"><br><br>
 
-                <label> Address Line 1 </label>
-                <input type="text" name="addressLine1" class="registration" id="addressLine1"><br><br>
+                <label for="address"> Address </label>
+                <input type="text" name="address" class="registration" id="addressLine1"><br><br>
 
-                <label> Address Line 2 </label>
-                <input type="text" name="addressLine2" class="registration" id="addressLine2"><br><br>
-
-                <label> Address Line 3 </label>
-                <input type="text" name="addressLine3" class="registration" id="addressLine3"><br><br>
-
-                <label> City </label>
+                <label for="city"> City </label>
                 <input type="text" name="city" class="registration" id="city"><br><br>
 
-                <label> Postcode </label>
+                <label for="postcode"> Postcode </label>
                 <input type="text" name="postcode" class="registration" id="postcode"><br><br>
 
-                <label> Password </label>
+                <label for="passwordCreate"> Password </label>
                 <input type="password" name="passwordCreate" class="registration" id="passwordCreate"><br><br>
 
-                <label> Re-Enter Password </label>
+                <label for="passwordCheck"> Re-Enter Password </label>
                 <input type="password" name="passwordCheck" class="registration" id="passwordCheck"><br><br>
 
                 <!-- On clicking this button, it runs the passwordValidate() function from the javascript, and also runs code
                 that inserts the data found in the above fields into the indexeddb database as an object. -->
-                <input type="submit" name="register" value="Register" class="registration" id="userRegistrationSubmit"\
-                onclick="passwordValidate()">
+                <input type="submit" name="register" value="Register" class="registration" id="userRegistrationSubmit">
 
             </form>
         </section>
 
-        <!-- This loads in the javascript from 'registration.js' -->
-        <script src="./registration.js"></script>
+        <!-- This loads in the php from 'registration.php' -->
+        <?php include './registration.php';?>
 
     </body>
 </html>
