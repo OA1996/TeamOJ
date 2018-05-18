@@ -14,7 +14,7 @@ echo "<!DOCTYPE html>
         <script src=\"../../js/jquery-3.2.1.js\"></script>
         <script src=\"../../js/indexeddb.js\"></script>
     </head>
-    <body onload=\"extractResults()\">
+    <body>
 
         <header class=\"check\">
             <h1> Bike Reporter </h1>

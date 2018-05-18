@@ -35,6 +35,8 @@ $query = "INSERT INTO `Users`(`Forename`, `Surname`, `Email`, `Address`, `Postco
 VALUES ('$firstName','surname','$email','$address','$postcode','$city','$hashedPassword','public',0)";
 
 if ($mysqli->query($query) === TRUE) {
+    // OLIVIA, EMAIL CODE TO BE PUT HERE
+    
     echo "<script>window.location.href = \"../../index.html\";</script>";
 } else {
     echo "Error: " . $query . "<br>" . $mysqli->error . "<br>";
