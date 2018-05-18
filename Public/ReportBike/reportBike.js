@@ -1,49 +1,96 @@
+// VERY FUCKING EXPERIMENTAL CODE, PROBABLY WON'T WORK
+function phpCodeRun() {
+    <?php
+
+    session_start();
+
+    $owner = $_SESSION['currentUser'];
+
+    // Change the following as applicable to suit the server it is on
+    // The values here are used in every mysqli connection in the file
+    $serverName = 'localhost';
+    $dbUsername = 's1703829_user';
+    $dbPassword = 'password100';
+    $dbName = 's1703829_TeamOJ';
+
+    // Creates a SQL db connection with the above credentials
+    $mysqli = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
+
+    // Checks for errors in the SQL connection
+    if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        session_destroy();
+        exit;
+    } else {
+        echo "SQL Connected<br>";
+    }
+
+    $query = "SELECT * FROM `Bikes` WHERE Owner = '$owner'";
+    $res = $mysqli->query($query);
+
+    if ($res->num_rows > 0) {
+        // output data of each row
+        while($row = $res->fetch_assoc()) {
+            $bikeMake = $row['Make'];
+            $bikeModel = $row['Model'];
+            $bikeSerialNumber = $row['Serial No'];
+
+            //echo $bikeMake . $row['Model'] . $row['Owner'] . $row['Investigation Progress'] . "<br>";
+            ?>
+            alert("It reaches the js");
+            // Displays all of the bikes that belong to the user and creates a
+            // table cell for each data item
+            var table = document.getElementById('bikeTable');
+            var row = table.insertRow(1);
+            var bikeMake = row.insertCell(0);
+            var bikeModel = row.insertCell(1);
+            var serialNo = row.insertCell(2);
+
+            // The object is outputted to the table elements
+            bikeMake.innerHTML = <?php echo $bikeMake ?>;
+            bikeModel.innerHTML = <?php echo $bikeModel ?>;
+            serialNo.innerHTML = <?php echo $bikeSerialNumber ?>;
+            <?php
+        }
+    } else {
+        echo "0 results";
+    }
+
+    $mysqli->close();
+
+    ?>
+}
+
+function phpCodeRun2() {
+    $.get("./reportBike.php", function(data){
+        alert('Function ran');
+    });
+}
+
+
+
+
+
+
 function extractResults() {
-    // Opens the database
-    var DBOpenRequest = window.indexedDB.open("bikeSiteDb");
-    var allBikeData;
+    // Iterates over the results from the data store
+    for(i = 0; i < len; i++) {
+        if(userID == allBikeData[i].userID) {
+            // Displays all of the bikes that belong to the user and creates a
+            // table cell for each data item
+            var table = document.getElementById('bikeTable');
+            var row = table.insertRow(1);
+            var bikeMake = row.insertCell(0);
+            var bikeModel = row.insertCell(1);
+            var serialNo = row.insertCell(2);
 
-    // If the database opens successfully, the following executes
-    DBOpenRequest.onsuccess = function(event) {
-        // assigns the opened database to a variable
-        db = DBOpenRequest.result;
-        // Runs the extractData() function
-        extractData();
-    };
-
-    function extractData() {
-        // Starts a readonly transaction with the bikes object store
-        var tx = db.transaction(['bikes'], 'readonly');
-        var objStore = tx.objectStore('bikes');
-        // Assigns the request for all of the data in the object store to a variable
-        var objStoreReq = objStore.getAll()
-        objStoreReq.onsuccess = function(event) {
-            // Assigns the data from the object store to a variable
-            allBikeData = objStoreReq.result;
-            // Assigns the userID from session storage to a variable
-            var userID = sessionStorage.getItem('userID');
-            // Assingns the length of the data store to a variable
-            var len = allBikeData.length;
-
-            // Iterates over the results from the data store
-            for(i = 0; i < len; i++) {
-                if(userID == allBikeData[i].userID) {
-                    // Displays all of the bikes that belong to the user and creates a
-                    // table cell for each data item
-                    var table = document.getElementById('bikeTable');
-                    var row = table.insertRow(1);
-                    var bikeMake = row.insertCell(0);
-                    var bikeModel = row.insertCell(1);
-                    var serialNo = row.insertCell(2);
-
-                    // The object is outputted to the table elements
-                    bikeMake.innerHTML = allBikeData[i].bikeMake;
-                    bikeModel.innerHTML = allBikeData[i].bikeModel;
-                    serialNo.innerHTML = allBikeData[i].bikeSerialNumber;
-                };
-            };
+            // The object is outputted to the table elements
+            bikeMake.innerHTML = allBikeData[i].bikeMake;
+            bikeModel.innerHTML = allBikeData[i].bikeModel;
+            serialNo.innerHTML = allBikeData[i].bikeSerialNumber;
         };
     };
+
 };
 
 // Code adapted from https://stackoverflow.com/questions/24750623/select-a-row-from-html-table-and-send-values-onclick-of-a-button

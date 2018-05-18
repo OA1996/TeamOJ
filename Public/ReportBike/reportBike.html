@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,17 +12,19 @@
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../../js/jquery-3.2.1.js"></script>
+
         <script src="../../js/indexeddb.js"></script>
         
         <!-- Google maps jquery -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
         <script
                 src="https://code.jquery.com/jquery-3.2.1.js"
                 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
                 crossorigin="anonymous"></script>
         
+
     </head>
-    <body onload="extractResults()">
+    <body onload="clickButton()">
 
         <header class="reportBike">
             <h1> Bike Reporter </h1>
@@ -40,6 +46,58 @@
         <section class="report">
             <p> Select a registered bike to report it as stolen: </p>
 
+
+
+            <div class="report">
+                <form class="report" action="reportBike.php" method="POST">
+                    <input type="submit" name="refresh" value="Generate Table" class="report" id="refreshButton" onclick="clickButton()">
+                </form>
+            </div>
+
+
+
+                <!-- <?php
+                $owner = $_SESSION['currentUser'];
+
+                // Change the following as applicable to suit the server it is on
+                // The values here are used in every mysqli connection in the file
+                $serverName = 'localhost';
+                $dbUsername = 's1703829_user';
+                $dbPassword = 'password100';
+                $dbName = 's1703829_TeamOJ';
+
+                // Creates a SQL db connection with the above credentials
+                $mysqli = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
+
+                // Checks for errors in the SQL connection
+                if ($mysqli->connect_errno) {
+                    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                    session_destroy();
+                    exit;
+                } else {
+
+                }
+
+                $query = "SELECT * FROM `Bikes` WHERE Owner = '$owner'";
+
+                $result = mysqli_query($mysqli, $query);
+
+                echo "<table class="report" id="bikeTable">
+                    <tr>
+                        <th>Bike Make</th>
+                        <th>Bike Model</th>
+                        <th>Serial No.</th>
+                    </tr>";
+
+                while($row = mysqli_fetch_array($result)) {
+                    echo "<tr><td>".$row['Make']."</td><td>".$row['Model']."</td><td>".$row['Serial No']."</td></tr>";
+                }
+                echo "</table><br>";
+
+                $mysqli->close();
+                ?> -->
+
+
             <!-- This table is created with the headers seen below, when the body of the page is loaded,
             a function is run to extract all of the relevant bike data for the user and output it in the
             following table. -->
@@ -54,11 +112,19 @@
             <label> Theft Location: </label>
               <div id="mapInput" style="width: 500px; height 400px;"></div> <br>
 
+
             <!-- On clicking the following button, a funciton is run to select the chosen serial number from the table
             and compare it with the database to find the right bike. After finding the right bike in the database, the
             entry is updated to say that the bike has been reported as stolen. -->
             <input type="submit" name="reportStolen" value="Report Stolen" class="report" onclick="serialNoSelect()">
         </section>
+
+        <form class='report' action='submitBikeReport.php' method='POST'>
+            <label for='serialNumber'>Serial Number:</label><br>
+            <input type='text' name='serialNumber'><br><br>
+
+            <input type='submit' name='submitSerialNumber' value='Report Stolen'>
+        </form>
 
         <!-- This loads in the javascript from 'reportBike.js' -->
         <script src="./reportBike.js"></script>

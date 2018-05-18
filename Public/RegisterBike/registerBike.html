@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +12,6 @@
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../../js/jquery-3.2.1.js"></script>
-        <script src="../../js/indexeddb.js"></script>
     </head>
     <body>
 
@@ -23,8 +26,8 @@
                 <ul>
                     <li> <a href="../Home/home.html">Home</a> </li>
                     <li> <a href="../RegisterBike/registerBike.html">Register Bike</a> </li>
-                    <li> <a href="../ReportBike/reportBike.html">Report Stolen Bike</a> </li>
-                    <li> <a href="../StatusCheck/statusCheck.html">Status Check</a> </li>
+                    <li> <a href="../ReportBike/reportBike.php">Report Stolen Bike</a> </li>
+                    <li> <a href="../StatusCheck/statusCheck.php">Status Check</a> </li>
                 </ul>
             </nav>
         </header>
@@ -32,39 +35,42 @@
         <section class="registerBike">
             <p>Register a Bike:</p>
 
-            <form class="bike" id="bikeRegistrationForm">
+            <form class="bike" id="bikeRegistrationForm" action="registerBike.php" method="POST" enctype="multipart/form-data">
                 <!-- This form takes user information as input and then insert said information into the indexeddb database. -->
-                <label> Bike Make: </label>
+                <label for="imageSelect"> Upload an Image: </label>
+                <input type="file" name="imageSelect"><br><br>
+
+                <label for="bikeMake"> Bike Make: </label>
                 <input type="text" name="bikeMake" class="registerBike" id="bikeMake"><br><br>
 
-                <label> Bike Model: </label>
+                <label for="bikeModel"> Bike Model: </label>
                 <input type="text" name="bikeModel" class="registerBike" id="bikeModel"><br><br>
 
-                <label> Bike Serial Number: </label>
+                <label for="bikeSerialNumber"> Bike Serial Number: </label>
                 <input type="text" name="bikeSerialNumber" class="registerBike" id="bikeSerialNumber"><br><br>
 
-                <label> Purchase Location: </label>
-                <input type="text" name="purchaseLocation" class="registerBike" id="purchaseLocation"><br><br>
-
-                <label> Bike Type: </label>
+                <label for="bikeType"> Bike Type: </label>
                 <input type="text" name="bikeType" class="registerBike" id="bikeType"><br><br>
 
-                <label> Gender: </label>
+                <label for="gender"> Gender: </label>
                 <input type="text" name="gender" class="registerBike" id="gender"><br><br>
 
-                <label> Age Group: </label>
+                <label for="ageGroup"> Age Group: </label>
                 <input type="text" name="ageGroup" class="registerBike" id="ageGroup"><br><br>
 
-            
+
+                <label for="theftLocation"> Theft Location: </label>
+                <input type="text" name="theftLocation" class="registerBike" id="theftLocation"><br><br>
                 
+
                 <!-- On clicking this button, the bike data is entered into the database through javascript functions -->
                 <input type="submit" name="registerBike" value="Register Bike" class="registerBike">
             </form>
 
         </section>
 
-        <!-- This loads in the javascript from 'registerBike.js' -->
-        <script src="./registerBike.js"></script>
+        <!-- This loads in the php from 'registerBike.php' -->
+        <?php include './registerBike.php';?>
 
     </body>
 </html>
