@@ -54,11 +54,12 @@ echo "<!DOCTYPE html>
                     <th>Bike Make</th>
                     <th>Bike Model</th>
                     <th>Serial No.</th>
+                    <th>Co-Ordinates</th>
                     <th>Recovery Status</th>
                 </tr>";
 
             while($row = mysqli_fetch_array($result)) {
-                echo "<tr><td>".$row['Owner']."</td><td>".$row['Make']."</td><td>".$row['Model']."</td><td>".$row['Serial No']."</td><td>".$row['Investigation Progress']."</td></tr>";
+                echo "<tr><td>".$row['Owner']."</td><td>".$row['Make']."</td><td>".$row['Model']."</td><td>".$row['Serial No']."</td><td>".$row['Theft Location']."</td><td>".$row['Investigation Progress']."</td></tr>";
             }
             echo "</table><br>";
 

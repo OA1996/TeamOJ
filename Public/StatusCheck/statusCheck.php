@@ -12,7 +12,6 @@ echo "<!DOCTYPE html>
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src=\"../../js/jquery-3.2.1.js\"></script>
-        <script src=\"../../js/indexeddb.js\"></script>
     </head>
     <body>
 
@@ -29,6 +28,7 @@ echo "<!DOCTYPE html>
                     <li> <a href=\"../RegisterBike/registerBike.html\">Register Bike</a> </li>
                     <li> <a href=\"../ReportBike/reportBike.php\">Report Stolen Bike</a> </li>
                     <li> <a href=\"../StatusCheck/statusCheck.php\">Status Check</a> </li>
+                    <li> <a href=\"../eBayCompare/eBayCompare.php\">eBay Compare</a> </li>
                 </ul>
             </nav>
         </header>
