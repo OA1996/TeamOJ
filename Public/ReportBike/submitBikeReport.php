@@ -28,6 +28,8 @@ $query = "UPDATE `Bikes` SET `Investigation Progress`='submittedForInvestigation
 WHERE `Serial No`='$bikeSerialNumber' AND `Owner`='$owner'";
 
 if ($mysqli->query($query) === TRUE) {
+    // OLIVIA, PLEASE PUT CODE HERE:
+    
     echo "<script>window.location.href = \"../Home/home.html\";</script>";
 } else {
     echo "Error: " . $query . "<br>" . $mysqli->error . "<br>";

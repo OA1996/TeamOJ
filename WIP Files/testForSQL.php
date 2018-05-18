@@ -2,12 +2,6 @@
 
 $owner = "s1703829@connect.glos.ac.uk";
 
-$subject = "Thanks for Registering!";
-$message = "Thanks for registering with our website!\n\nPlease log in on the site to access all features!";
-$headers = "From: noreply@bikereporter.com";
-
-mail($owner, $subject, $message, $headers);
-
 // // Change the following as applicable to suit the server it is on
 // // The values here are used in every mysqli connection in the file
 // $serverName = 'localhost';
