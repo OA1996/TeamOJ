@@ -26,8 +26,12 @@ $query = "UPDATE `Bikes` SET `Investigation Progress`='$recoveryStage'
 WHERE `Serial No`='$serialNumber' AND `Owner`='$owner'";
 
 if ($mysqli->query($query) === TRUE) {
-    // OLIVIA PUT EMAIL CODE HERE
+    // Email Update
+$subject = "Investigation Status Update";
+$message = "Your bike's investigation status has been updated, please login to see more.";
+$headers = "From: noreply@bikereporter.com";
     
+mail($owner, $subject, $message, $headers);
     echo "<script>window.location.href = \"./updateInvestigation.php\";</script>";
 } else {
     echo "Error: " . $query . "<br>" . $mysqli->error . "<br>";
