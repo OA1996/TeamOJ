@@ -8,35 +8,31 @@
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../js/jquery-3.2.1.js"></script>
-        <script src="../js/indexeddb.js"></script>
     </head>
     <body>
         <h1>Create Users</h1>
 
-        <form id="policeUserCreate">
+        <form id="policeUserCreate" action="adminControlPanel.php" method="POST">
             <!-- This form takes user information as input and then insert said information into the indexeddb database. -->
-            <label> First Name </label>
+            <label for="firstName"> First Name </label>
             <input type="text" name="firstName" class="policeRegister" id="firstName"><br><br>
 
-            <label> Surname </label>
+            <label for="surname"> Surname </label>
             <input type="text" name="surname" class="policeRegister" id="surname"><br><br>
 
-            <label> Officer ID </label>
-            <input type="text" name="officerID" class="policeRegister" id="officerID"><br><br>
+            <label for="officerEmail"> Officer Email </label>
+            <input type="text" name="officerEmail" class="policeRegister" id="officerID"><br><br>
 
-            <label> Password </label>
+            <label for="passwordCreate"> Password </label>
             <input type="password" name="passwordCreate" class="policeRegister" id="passwordCreate"><br><br>
 
-            <label> Re-Enter Password </label>
+            <label for="passwordCheck"> Re-Enter Password </label>
             <input type="password" name="passwordCheck" class="policeRegister" id="passwordCheck"><br><br>
 
             <!-- On clicking this button, the passwordValidate() function is called, and the data is entered into the
             database -->
-            <input type="submit" name="policeRegister" value="Create" class="policeRegister" onclick="passwordValidate()">
+            <input type="submit" name="policeRegister" value="Create" class="policeRegister">
         </form>
-
-        <!-- This loads in the javascript from 'adminControlPanel.js' -->
-        <script src="./adminControlPanel.js">policeRegister</script>
 
     </body>
 </html>
