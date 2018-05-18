@@ -9,7 +9,7 @@ echo "<!DOCTYPE html>
         <!-- Links the Stylesheet -->
         <link rel=\"stylesheet\" type=\"text/css\" href=\"..\..\Stylesheet\stylesheet.css\">
 
-        <!-- Loads in jQuery 3.2.1 and indexeddb -->
+        <!-- Loads in jQuery 3.2.1 -->
         <script src=\"../../js/jquery-3.2.1.js\"></script>
     </head>
     <body>
