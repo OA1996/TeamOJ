@@ -12,6 +12,17 @@ session_start();
 
         <!-- Loads in jQuery 3.2.1 and indexeddb -->
         <script src="../../js/jquery-3.2.1.js"></script>
+
+        <script src="../../js/indexeddb.js"></script>
+        
+        <!-- Google maps jquery -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.js"
+                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+                crossorigin="anonymous"></script>
+        
+
     </head>
     <body onload="clickButton()">
 
@@ -34,6 +45,7 @@ session_start();
 
         <section class="report">
             <p> Select a registered bike to report it as stolen: </p>
+
 
 
             <div class="report">
@@ -84,6 +96,21 @@ session_start();
 
                 $mysqli->close();
                 ?> -->
+
+
+            <!-- This table is created with the headers seen below, when the body of the page is loaded,
+            a function is run to extract all of the relevant bike data for the user and output it in the
+            following table. -->
+            <table class="report" id="bikeTable">
+                <tr>
+                    <th>Bike Make</th>
+                    <th>Bike Model</th>
+                    <th>Serial No.</th>
+                </tr>
+            </table><br>
+            
+            <label> Theft Location: </label>
+              <div id="mapInput" style="width: 500px; height 400px;"></div> <br>
 
 
             <!-- On clicking the following button, a funciton is run to select the chosen serial number from the table
