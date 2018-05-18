@@ -73,7 +73,7 @@ if (!$res) {
             exit;
         } elseif ($row['Privilege'] == 'police') {
             $_SESSION['Privilege'] = 'police';
-            echo "<script>window.location.href = \"./Police/updateInvestigation/updateInvestigation.html\";</script>";
+            echo "<script>window.location.href = \"./Police/updateInvestigation/updateInvestigation.php\";</script>";
             exit;
         } elseif ($row['Privilege'] == 'admin') {
             $_SESSION['Privilege'] = 'admin';

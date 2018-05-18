@@ -37,12 +37,22 @@
             bike recovery. These stages are each assigned a number, and this number can be stored in the
             database. -->
             <p>Recovery Stage Update:</p>
-            <select class="update" name="recoveryStage" id="recoveryStageUpdate">
-                <option value="1">Bike Reported Stolen</option>
-                <option value="2">Bike Retrieved</option>
-                <option value="3">Bike Ready for Collection</option>
-                <option value="4">Bike Collected</option>
-            </select><br><br>
+            <form class="update" action="updateButtonPress.php" method="POST">
+                <select class="update" name="recoveryStage" id="recoveryStageUpdate">
+                    <option value=\"submittedForInvestigation\">Bike Submitted for Investigation</option>
+                    <option value=\"bikeRetrieved\">Bike Retrieved</option>
+                    <option value=\"bikeReadyCollection\">Bike Ready for Collection</option>
+                    <option value=\"bikeCollected\">Bike Collected</option>
+                </select><br><br>
+
+                <label for="serialNumber">Serial Number</label>
+                <input type="text" name="serialNumber"><br><br>
+
+                <label for="owner">Owner</label>
+                <input type="text" name="owner"><br><br>
+
+                <input type="submit" name="submitUpdate" value="Update">
+            </form>
 
             <!-- Upon pressing the following button, a function is run to select the relevant bike values and
             change the recovery status associated with the bike. -->
