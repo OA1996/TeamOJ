@@ -10,7 +10,7 @@ $bikeSerialNumber = $_POST['bikeSerialNumber'];
 $bikeType = $_POST['bikeType'];
 $gender = $_POST['gender'];
 $ageGroup = $_POST['ageGroup'];
-$theftLocation = $_POST['theftLocation'];
+$theftLocation = 'n/a';
 $owner = $_SESSION['currentUser'];
 
 // Converts the image to base64

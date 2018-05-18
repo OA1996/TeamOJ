@@ -80,6 +80,36 @@ echo "<form class='report' action='submitBikeReport.php' method='POST'>
     <label for='serialNumber'>Serial Number:</label><br>
     <input type='text' name='serialNumber'><br><br>
 
+
+    <label for='map'>Drag the marker to the last known location of the bike, then click 'Report Stolen':</label><br>
+    <div name=\"map\" style=\"height: 300px; width: 500px;\" id=\"map\"></div>
+    <script>
+      var marker;
+      function handleEvent(event) {
+          document.getElementById('position').value = event.latLng;
+      };
+      function initMap() {
+        var chelt = {lat: 51.899382, lng: -2.078255};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: chelt
+        });
+        marker = new google.maps.Marker({
+          position: chelt,
+          map: map,
+          draggable: true
+        });
+        marker.addListener('drag', handleEvent);
+        marker.addListener('dragend', handleEvent);
+      }
+    </script>
+
+    <script async defer
+    src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyC5KQsq8B6Ab2bm0PxSV9bf9FVkL_-Sq7E&callback=initMap\">
+    </script>
+
+    <input type='hidden' name='latLng' id=\"position\"><br><br>
+
     <input type='submit' name='submitSerialNumber' value='Report Stolen'>
 </form>";
 

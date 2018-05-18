@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>TEST</title>
-    </head>
-    <body>
+<html>
+  <head>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div style="height: 300px; width: 500px;" id="map"></div>
+    <script>
+      var marker;
+      function handleEvent(event) {
+          document.getElementById('display').value = event.latLng;
+      };
+      function initMap() {
+        var chelt = {lat: 51.899382, lng: -2.078255};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: chelt
+        });
+        marker = new google.maps.Marker({
+          position: chelt,
+          map: map,
+          draggable: true
+        });
+        marker.addListener('drag', handleEvent);
+        marker.addListener('dragend', handleEvent);
+      }
+    </script>
 
-        <form class="killMe" action="testForSQL.php" method="POST">
-            <input type="submit" name="killMe" value="Run">
-        </form>
+    <input type="submit" name="markerPos" value="Get Position" onclick="getPosition()">
 
-        <?php
+    <input type="text" name="latLng" id="display">
+    <p id="displayLat"></p>
+    <p id="displayLng"></p>
 
-        $owner = "joshjackson@email.com";
-
-        // Change the following as applicable to suit the server it is on
-        // The values here are used in every mysqli connection in the file
-        $serverName = 'localhost';
-        $dbUsername = 's1703829_user';
-        $dbPassword = 'password100';
-        $dbName = 's1703829_TeamOJ';
-
-        // Creates a SQL db connection with the above credentials
-        $mysqli = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
-
-        // Checks for errors in the SQL connection
-        if ($mysqli->connect_errno) {
-            echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-            session_destroy();
-            exit;
-        } else {
-            echo "SQL Connected<br>";
-        }
-
-        $query = "SELECT * FROM `Bikes` WHERE Owner = '$owner'";
-
-        $result = mysqli_query($mysqli, $query);
-
-        echo "<table border='1'>
-        <tr>
-        <th>Bike Make</th>
-        <th>Bike Model</th>
-        <th>Serial Number</th>
-        </tr>";
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5KQsq8B6Ab2bm0PxSV9bf9FVkL_-Sq7E&callback=initMap">
+    </script>
 
 
-        while($row = mysqli_fetch_array($result)) {
-            echo "<tr><td>".$row['Make']."</td><td>".$row['Model']."</td><td>".$row['Serial No']."</td></tr>";
-        }
-        echo "</table>";
 
-        $mysqli->close();
-
-        ?>
-
-
-        <!-- This loads in the php from 'testForSQL.php' -->
-        <?php include './testForSQL.php';?>
-
-    </body>
+  </body>
 </html>

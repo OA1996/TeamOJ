@@ -3,6 +3,7 @@
 session_start();
 
 $bikeSerialNumber = $_POST['serialNumber'];
+$latLng = $_POST['latLng'];
 $owner = $_SESSION['currentUser'];
 
 // Change the following as applicable to suit the server it is on
@@ -24,7 +25,7 @@ if ($mysqli->connect_errno) {
 
 }
 
-$query = "UPDATE `Bikes` SET `Investigation Progress`='submittedForInvestigation'
+$query = "UPDATE `Bikes` SET `Investigation Progress`='submittedForInvestigation', `Theft Location`='$latLng'
 WHERE `Serial No`='$bikeSerialNumber' AND `Owner`='$owner'";
 
 if ($mysqli->query($query) === TRUE) {
@@ -32,9 +33,9 @@ if ($mysqli->query($query) === TRUE) {
 $subject = "Investigation Status Update";
 $message = "Your bike's investigation status has been updated, please login to see more.";
 $headers = "From: noreply@bikereporter.com";
-    
+
 mail($owner, $subject, $message, $headers);
-    
+
     echo "<script>window.location.href = \"../Home/home.html\";</script>";
 } else {
     echo "Error: " . $query . "<br>" . $mysqli->error . "<br>";
