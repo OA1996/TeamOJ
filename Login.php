@@ -61,13 +61,14 @@ if (!$res) {
 
         // Puts the email from the database into the session storage if email
         // and password match those on file
-        $_SESSION['currentUser'] = $GLOBALS['dbEmail'];
+        $_SESSION['currentUser'] = $GLOBALS['email'];
 
         // Check permissions and decide where to put user
         // Stores user permissions in session storage, then uses js to put the
         // user on the correct homepage
         if ($row['Privilege'] == 'public') {
             $_SESSION['Privilege'] = 'public';
+            print_r($_SESSION);
             echo "<script>window.location.href = \"./Public/Home/home.html\";</script>";
             exit;
         } elseif ($row['Privilege'] == 'police') {

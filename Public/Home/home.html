@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,8 +23,8 @@
                 <ul>
                     <li> <a href="../Home/home.html">Home</a> </li>
                     <li> <a href="../RegisterBike/registerBike.html">Register Bike</a> </li>
-                    <li> <a href="../ReportBike/reportBike.html">Report Stolen Bike</a> </li>
-                    <li> <a href="../StatusCheck/statusCheck.html">Status Check</a> </li>
+                    <li> <a href="../ReportBike/reportBike.php">Report Stolen Bike</a> </li>
+                    <li> <a href="../StatusCheck/statusCheck.php">Status Check</a> </li>
                 </ul>
             </nav>
         </header>
@@ -30,6 +34,9 @@
             being recovered. You will be able to register bikes that you own on this site, report the theft of the bikes,
             and track the progess of their recovery.</p>
         </section>
+
+        <!-- This loads in the php from 'home.php' -->
+        <?php include './home.php';?>
 
     </body>
 </html>
